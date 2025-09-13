@@ -127,4 +127,5 @@ module.exports = {
 };
 
 
-signUpUser('userPrueba', 'userPrueba@gmail.com', 'Prueba-123');
+// signUpUser('userPrueba', 'userPrueba@gmail.com', 'Prueba-123');
+// signUpUser('adminPrueba', 'adminPrueba@gmail.com', 'Admin-321');
