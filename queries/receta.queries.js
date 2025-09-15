@@ -13,6 +13,15 @@ const recetaQueries = {
   getRecetaById: `
     SELECT * FROM Recetas WHERE RecetaID = $1;
   `,
+  getRecetaByName:`
+    SELECT * FROM Recetas WHERE Nombre = $1
+  `,
+  getRecetasByUserID:`
+    SELECT * FROM Recetas WHERE UserID = $1
+  `,
+  getRectasByNameAndCategory:`
+    SELECT * FROM Recetas WHERE Nombre = $1 AND Categoria =$2
+  `,
   updateReceta: `
     UPDATE Recetas
     SET Nombre = $2, Descripcion = $3, Ingredientes = $4, Categoria = $5, NombreFamiliar = $6, Imagen = $7

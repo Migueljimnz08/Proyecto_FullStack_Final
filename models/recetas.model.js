@@ -33,6 +33,21 @@ const getRecetaById = async (recetaID) => {
   return await executeQuery(recetaQueries.getRecetaById, [recetaID]);
 };
 
+// Buscar receta por UserID
+const getRecetasByUserID = async (userID) => {
+  return await executeQuery(recetaQueries.getRecetasByUserID, [userID]);
+};
+
+// Buscar receta por Nombre
+const getRecetasByName = async (nombre) => {
+  return await executeQuery(recetaQueries.getRecetaByName, [nombre]);
+};
+
+// Buscar receta por Nombre y Categoria
+const getRecetasByNameAndCategoria = async (nombre, categoria) => {
+  return await executeQuery(recetaQueries.getRectasByNameAndCategory, [nombre, categoria]);
+};
+
 // Actualizar receta
 const updateReceta = async (recetaID, nombre, descripcion, ingredientes, categoria, nombreFamiliar, imagen) => {
   if(!regex.validateImg(imagen)){
@@ -59,6 +74,9 @@ module.exports = {
   getAllRecetas,
   getRecetasByCategoria,
   getRecetaById,
+  getRecetasByUserID,
+  getRecetasByName,
+  getRecetasByNameAndCategoria,
   updateReceta,
   deleteReceta
 };
