@@ -5,7 +5,7 @@ const protectedRoutes = require('../middlewares/tokenVerification');
 const authorizeRole = require('../middlewares/roleVerification');
 
 // GET
-router.get('/:UserID', /*protectedRoutes, authorizeRole('user'),*/ favsController.getFavsByUser);
+router.get('/user/:userId', /*protectedRoutes, authorizeRole('user'),*/ favsController.getFavsByUser);
 
 // POST
 router.post('/', /*protectedRoutes, authorizeRole('user'),*/ favsController.addFav);

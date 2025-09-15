@@ -32,6 +32,15 @@ const recetas = [
     nombreFamiliar: 'Cheesecake de Pepe',
     imagen: 'uploads/tarta.jpg',
   },
+   {
+    userID: 2,
+    nombre: 'Pavo a la naranja',
+    descripcion: 'Pavo tierno con salsa a la naranja',
+    ingredientes: 'Pavo, cebolla, romero, pimienta negra, aceite',
+    categoria: 'Carnes',
+    nombreFamiliar: 'Pavo de Petri',
+    imagen: 'uploads/pavo.jpg',
+  },
 ];
 
 const seed = async () => {
@@ -71,3 +80,5 @@ const seed = async () => {
     process.exit(1);
   }
 };
+
+seed();
