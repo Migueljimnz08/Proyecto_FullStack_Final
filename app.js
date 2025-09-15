@@ -27,6 +27,16 @@ app.use(morgan(':method :url :status :param[id] - :response-time ms :body'));
 // Ficheros estáticos de la carpeta uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Rutas
+const usersRoutes = require('./routes/users.routes');
+const favsRoutes = require('./routes/favs.routes');
+const recipeRoutes = require('./routes/recetas.routes');
+
+// Rutas API 
+app.use('/api', usersRoutes);
+app.use('/api/favs', favsRoutes);
+app.use('/api/recipes', recipeRoutes);
+
 app.use(helmet());
 
 app.listen(port, () => {

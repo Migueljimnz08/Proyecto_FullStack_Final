@@ -4,7 +4,8 @@ const { updateReceta } = require('../queries/receta.queries');
 
 // POST http://localhost:3000/api/recipe
 const createReceta = async (req, res) => {
-  const { userID, nombre, descripcion, ingredientes, categoria, nombreFamiliar } = req.body;
+  const { nombre, descripcion, ingredientes, categoria, nombreFamiliar } = req.body;
+  const userID = req.user.id
     if (!req.file) return res.status(400).json({ msg: 'Missing image file' });
     const imagen = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
 
@@ -25,32 +26,49 @@ const createReceta = async (req, res) => {
   }
 };
 
-// GET http://localhost:3000/api/recipe
-const getAllRecetas = async (req, res) => {
+// GET http://localhost:3000/api/recipe?category=quesos&name=tarta
+const getRecetas = async (req, res) => {
+  let recetas;
+  let name = req.query.name;
+  let category = req.query.category;
   try {
-    const recetas = await recetaModel.getAllRecetas();
-    res.status(200).json(recetas);
-  } catch (error) {
-    res.status(500).json({ error: 'Error getting recipes' });
-  }
+    if(name && category){
+      recetas = await recetaModel.getRecetasByNameAndCategoria(name,category);
+    }
+    else if(category){
+      recetas = await recetaModel.getRecetasByCategoria(category);
+    }
+    else if(name){
+      recetas = await recetaModel.getRecetasByName(name)
+    }
+    else{
+      recetas = await recetaModel.getAllRecetas();
+    }
+    if (!recetas) {
+      return res.status(404).json({ message: 'Recipes not found' });
+    }
+      res.status(200).json(recetas);
+    } catch (error) {
+      res.status(500).json({ error: 'Error getting recipes' });
+    }
 };
 
-// GET http://localhost:3000/api/recipe/category
-const getRecetasByCategoria = async (req, res) => {
-  const { categoria } = req.body;
+// GET http://localhost:3000/api/recipe/id
+const getRecetasById = async (req, res) => {
+  const { recetaID } = req.params;
   try {
-    const recetas = await recetaModel.getRecetasByCategoria(categoria);
+    const recetas = await recetaModel.getRecetaById(recetaID);
     res.status(200).json(recetas);
   } catch (error) {
     res.status(500).json({ error: 'Error filtering recipes' });
   }
 };
 
-// GET http://localhost:3000/api/recipe/id
-const getRecetasByUser = async (req, res) => {
-  const { UserID } = req.params;
+// GET http://localhost:3000/api/recipe/user/3  -->:user_id
+const getRecetasByUserId = async (req, res) => {
+  const { userId } = req.user.id;
   try {
-    const recetas = await recetaModel.getRecetaById(UserID);
+    const recetas = await recetaModel.getRecetasByUserID(userId);
     res.status(200).json(recetas);
   } catch (error) {
     res.status(500).json({ error: 'Error filtering recipes' });
@@ -89,16 +107,23 @@ const editReceta = async (req, res) => {
 
 // DELETE http://localhost:3000/api/recipe
 const deleteReceta = async (req, res) => {
-  const { recetaID } = req.body;
+  const { recetaID } = req.params;
+  const userIdFromToken = req.user.id;
   if (!recetaID) {
     return res.status(400).json({ error: 'Could not identify the recipe' });
   }
   try {
-    const deleted = await recetaModel.deleteReceta(recetaID);
-    if (deleted.rowCount === 0) {
+    const receta = await recetaModel.getRecetaById(recetaID);
+
+     if (receta[0].UserID !== userIdFromToken) {
+      return res.status(403).json({ error: 'You can only delete your own recipes' });
+    } else {
+      const deleted = await recetaModel.deleteReceta(recetaID);
+      if (deleted.rowCount === 0) {
       return res.status(404).json({ message: 'Could not find or delete recipe' });
+      }
+      res.status(200).json({ message: `Recipe successfully deleted` });
     }
-    res.status(200).json({ message: `Recipe successfully deleted` });
   } catch (error) {
     console.error('Error in deleteReceta:', error);
     res.status(500).json({ error: 'Error deleting recipe' });
@@ -107,9 +132,9 @@ const deleteReceta = async (req, res) => {
 
 module.exports = {
   createReceta,
-  getAllRecetas,
-  getRecetasByCategoria,
-  getRecetasByUser,
+  getRecetas,
+  getRecetasById,
+  getRecetasByUserId,
   editReceta,
   deleteReceta
 };
