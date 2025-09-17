@@ -6,7 +6,7 @@ Este proyecto es una **aplicación web FullStack** para gestionar recetas famili
 
 ---
 
-## 📦 Tecnologías
+## 🛠  Tecnologías
 
 - **Frontend:** React, React Router, Sass (SCSS), Vite
 - **Backend:** Node.js, Express
@@ -20,9 +20,9 @@ Este proyecto es una **aplicación web FullStack** para gestionar recetas famili
 
 ```
 src/
+├─ assets/           # Fotos por defecto de comidas por categoria (En caso de que la imagen o el url no funcionen bien)
 ├─ components/       # Componentes reutilizables (Header, Footer, Nav, RecipeCard, etc.)
-├─ services/         # Servicios para llamadas al backend (users, recipes, favs)
-├─ views/            # Vistas principales (Home, Register, Login, RecipeDetails)
+├─ services/         # Servicios para llamadas al backend (users, recipes, favs)          
 ├─ styles/           # SCSS, organizado en components, utils, views
 ├─ App.jsx
 └─ main.jsx
@@ -34,7 +34,7 @@ src/
 
 ---
 
-## 🚀 Instalación
+## ⚙️ Instalación y uso
 
 1. Clona el repositorio:
 
@@ -53,20 +53,18 @@ npm install
 
 ```
 PORT=3000
-DATABASE_URL=postgres://usuario:contraseña@localhost:5432/recetas
+DB_USER= 
+DB_HOST= La url de tu base de datos
+DB_NAME= El nombre de tu base de datos
+DB_PASS= La contraseña de tu puerto
+DB_PORT= Tu puerto
 SECRET_KEY=tu_clave_secreta
 ```
 
-4. Inicia el backend:
+4. Inicia el backend y el frontend (Vite):
 
 ```bash
-npm run dev
-```
-
-5. Inicia el frontend (Vite):
-
-```bash
-npm run dev --prefix client
+npm run deply
 ```
 
 ---
@@ -81,25 +79,25 @@ npm run dev --prefix client
 
 ### Vista Home
 
-
+![Vista Home](./assets/Vista%20home.png)
 
 ### Vista Detalles de Receta
 
-
+![Vista Detalles de Receta](./assets/Vista%20detallada%20de%20receta.png)
 
 ### Vista Registro
 
-
+![Vista Registro](./assets/Vista%20de%20registro.png)
 
 ### Vista Login
 
-
+![Vista Login](./assets/Vista%20de%20login.png)
 
 ---
 
 ## 🎨 Diseño
 
-- **Colores principales:** Azul (`#2196F3`) y verde (`#4CAF50`)
+- **Colores principales:** Azul y verde 
 - **Tipografía:** Arial, sans-serif
 - **SASS:** Variables y mixins para consistencia de estilos.
 - **Responsive:** Diseñado para escritorio y tabletas, con flexbox y grid.
@@ -113,6 +111,7 @@ npm run dev --prefix client
 - Gestión de perfil de usuario.
 - Mejoras de responsive design para móviles.
 - Posibilidad de subir recetas por los usuarios.
+- Vista de todas las recetas favoritas de un usuario
 
 ---
 
@@ -128,7 +127,17 @@ Si quieres contribuir:
 
 ---
 
-## 📄 Licencia
+## 👨‍💻 Autor
 
-Este proyecto es **propio** y puede usarse como referencia o para fines educativos.
+**Miguel Ángel Jiménez Morante**
+
+Desarrollador Web Full Stack
+
+[GitHub](https://github.com/Migueljimnz08) 
+
+---
+
+## 📝 Licencia
+
+Este proyecto está libre para uso educativo y personal. Si lo usas, ¡menciona el autor!
 
