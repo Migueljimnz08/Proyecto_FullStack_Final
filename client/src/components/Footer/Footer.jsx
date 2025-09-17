@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  return <div>Footer</div>;
+  return <footer>© Mi proyecto Final en TheBridge</footer>;
 };
 
 export default Footer;

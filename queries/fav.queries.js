@@ -2,14 +2,14 @@ const favQueries = {
     getFavsByUser: `
     SELECT r.*
     FROM Favs f
-    JOIN Recetas r ON f.RecetaID = r.RecetaID
-    WHERE f.UserID = $1`,
+    JOIN Recipes r ON f.recipeid = r.recipeid
+    WHERE f.userid = $1`,
     addFavorite: `
-    INSERT INTO Favs(UserID, RecetasID)
+    INSERT INTO Favs(UserID, RecipeID)
     VALUES ($1,$2)`,
     deleteFavorite: `
-    DELETE FROM favorites
-    WHERE UserID = $1 AND RecetasID = $2`
+    DELETE FROM Favs
+    WHERE UserID = $1 AND RecipeID = $2`
 }
 
 module.exports = favQueries;
