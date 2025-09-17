@@ -64,7 +64,7 @@ SECRET_KEY=tu_clave_secreta
 4. Inicia el backend y el frontend (Vite):
 
 ```bash
-npm run deply
+npm run deploy
 ```
 
 ---
