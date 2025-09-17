@@ -1,11 +1,11 @@
 -- Borrar todo si ya existía
 DROP TABLE IF EXISTS Favs;
-DROP TABLE IF EXISTS Recetas;
+DROP TABLE IF EXISTS Recipes;
 DROP TABLE IF EXISTS Users;
-DROP TYPE IF EXISTS categoria_enum;
+DROP TYPE IF EXISTS category_enum;
 
 -- Crear tipo ENUM para Categorías
-CREATE TYPE categoria_enum AS ENUM (
+CREATE TYPE category_enum AS ENUM (
   'Cuchara',
   'Arroces',
   'Pescados',
@@ -24,15 +24,15 @@ CREATE TABLE Users (
 );
 
 -- Tabla de Recetas
-CREATE TABLE Recetas (
-  RecetaID SERIAL PRIMARY KEY,
+CREATE TABLE Recipes (
+  RecipeID SERIAL PRIMARY KEY,
   UserID INT NOT NULL,
-  Nombre VARCHAR(100) NOT NULL,
-  Descripcion TEXT,
-  Ingredientes TEXT,
-  Categoria categoria_enum NOT NULL,
-  NombreFamiliar VARCHAR(100),
-  Imagen TEXT,
+  Name VARCHAR(100) NOT NULL,
+  Description TEXT,
+  Ingredients TEXT,
+  Category category_enum NOT NULL,
+  FamilyName VARCHAR(100),
+  Image TEXT,
   FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
 );
 
@@ -40,10 +40,10 @@ CREATE TABLE Recetas (
 CREATE TABLE Favs (
   ID SERIAL PRIMARY KEY,
   UserID INT NOT NULL,
-  RecetaID INT NOT NULL,
+  RecipeID INT NOT NULL,
   FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE,
-  FOREIGN KEY (RecetaID) REFERENCES Recetas(RecetaID) ON DELETE CASCADE,
-  UNIQUE (UserID, RecetaID)
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID) ON DELETE CASCADE,
+  UNIQUE (UserID, RecipeID)
 );
 
 --INSERTAR DATOS PRUEBA :

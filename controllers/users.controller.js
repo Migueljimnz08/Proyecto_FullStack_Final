@@ -8,8 +8,7 @@ const signUpUser = async (req, res) => {
     const { username, email, password } = req.body
     try {
         if (!username || !email || !password) {
-            console.log(username,password,email);
-            
+      
             return res.status(400).send('Missing necessary data');
         }
         const response = await userAndAdmin.signUpUser(username, email, password);
@@ -33,7 +32,7 @@ const loginUser = async (req, res) => {
         const user = await userAndAdmin.getUserByEmail(email);
         if (user && await bcrypt.compare(password, user.password)) {
             await userAndAdmin.logIn(email)
-            const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, process.env.SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user.userid, email: user.email, role: user.role, logged: user.logged }, process.env.SECRET_KEY, { expiresIn: '1h' });
             res.cookie('token', token, { httpOnly: true });
             res.status(200).json({ msg: 'Login successful', token });
         } else {

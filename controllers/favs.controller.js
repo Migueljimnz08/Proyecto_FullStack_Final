@@ -5,6 +5,7 @@ const getFavsByUser = async (req, res) => {
   const userID = req.user.id;
   try {
     const favs = await favModel.getFavsByUser(userID);
+    // console.log('Favs', favs);
     res.status(200).json(favs);
   } catch (error) {
     res.status(500).json({ error: 'Error getting favs' });
@@ -13,10 +14,10 @@ const getFavsByUser = async (req, res) => {
 
 // POST http://localhost:3000/api/favorites
 const addFav = async (req, res) => {
-  const recetaID = req.params;
+  const recipeId = req.params.recipeId;
   const userID = req.user.id;
   try {
-    const fav = await favModel.addFav(userID, recetaID);
+    const fav = await favModel.addFav(userID, recipeId);
     res.status(201).json({ msg: 'Recipe added to favs', data: fav });
   } catch (error) {
     res.status(500).json({ error: 'Error adding fav' });
@@ -25,10 +26,10 @@ const addFav = async (req, res) => {
 
 // DELETE http://localhost:3000/api/favorites
 const deleteFav = async (req, res) => {
-  const recetaID = req.params;
+  const recipeId = req.params.recipeId;
   const userID = req.user.id;
   try {
-    await favModel.deleteFav(userID, recetaID);
+    await favModel.deleteFav(userID, recipeId);
     res.status(200).json({ msg: 'Recipe deleted from favs' });
   } catch (error) {
     res.status(500).json({ error: 'Error deleting fav' });

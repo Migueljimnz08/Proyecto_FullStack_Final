@@ -1,6 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
-const recetaValidation = [
+const recipeValidation = [
   body('nombre')
     .notEmpty().withMessage('Recipe name is required')
     .isLength({ min: 3 }).withMessage('Name must be at least 3 characters long'),
@@ -43,4 +43,4 @@ const validateRequest = (req, res, next) => {
   next();
 };
 
-module.exports = { recetaValidation, userValidation, validateRequest };
+module.exports = { recipeValidation, userValidation, validateRequest };
