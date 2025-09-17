@@ -41,7 +41,7 @@ const Searcher = () => {
     await fetchWithFilters(name, value);
   }
 
-  return <section>
+  return <section className="home">
     <h3>¿Qué te apetece hoy?</h3>
     <div className="search-box">
       <input type="text" 

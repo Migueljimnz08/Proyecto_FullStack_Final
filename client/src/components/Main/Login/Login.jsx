@@ -20,14 +20,15 @@ const Login = () => {
     }
   };
 
-  return (
+  return (<section className='login-form'>
+    <h2>Inicia sesion</h2>
     <form onSubmit={handleSubmit}>
       <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
       <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
       <button type="submit">Login</button>
       {error!=null? <p>{error}</p>: null}
     </form>
-  );
+  </section> );
 }
 
 export default Login;

@@ -1,4 +1,10 @@
-@use './utils/variables' as v;
 
-@use './views/App';
-@use './views/Index';
+@use './components/Header';
+@use './components/Footer';
+@use './components/Main';
+@use './components/Login';
+@use './components/Register';
+@use './components/RecipeCard';
+@use './components/RecipeDetails';
+@use './components/RecipeList';
+@use './components/Searcher';

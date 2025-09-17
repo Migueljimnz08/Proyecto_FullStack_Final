@@ -2,7 +2,7 @@ export const addFav = async (recipeId) => {
     try{
         const res = await fetch(`http://localhost:3000/api/favs/${recipeId}`, {
             method: "POST",
-            credentials: "include", // importante para enviar cookies (token)
+            credentials: "include", // importante para enviar cookies
         });
         if (!res.ok) {
             throw new Error("Error adding favorite");

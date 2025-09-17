@@ -1,0 +1,9 @@
+@use '../utils/variables' as vars;
+
+.main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: vars.$gap-section;
+  font-family: vars.$font-family;
+}

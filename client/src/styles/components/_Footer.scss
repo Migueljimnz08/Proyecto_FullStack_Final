@@ -1,0 +1,29 @@
+@use '../utils/variables' as vars;
+
+.footer {
+  width: 100%;
+  padding: vars.$padding-section;
+  background-color: #2c2c2c; // gris oscuro
+  color: #fff;
+  font-family: vars.$font-family;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  a {
+    color: vars.$color-secondary;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: vars.$color-accent;
+    }
+  }
+}

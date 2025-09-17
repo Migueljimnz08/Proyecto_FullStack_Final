@@ -1,0 +1,33 @@
+// src/styles/utils/_variables.scss
+
+// Colores
+$color-primary: #ffffff; // fondo general / header
+$color-secondary: #2196F3; // azul principal
+$color-accent: #4caf50; // verde principal
+$color-green: #43a047; // verde oscuro para botones
+$color-light: #f9f9f9; // texto claro
+$color-dark: #333333; // texto oscuro
+$color-bg: #f5f5f5; // fondo general de secciones
+$color-border: #e0e0e0; // borde ligero
+
+// Espaciados
+$padding-btn: 0.5rem 1rem;
+$padding-section: 1rem 2rem;
+$gap-btn: 1rem;
+$gap-section: 2rem;
+$gap-card: 1.5rem;
+
+// Bordes
+$border-radius: 0.5rem;
+$border-radius-card: 0.75rem;
+
+// Tipografía
+$font-family: 'Arial', sans-serif;
+$font-size-base: 1rem;
+$font-size-heading: 1.5rem;
+$font-size-small: 0.875rem;
+
+// Sombras
+$shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+$shadow-medium: 0 4px 6px rgba(0,0,0,0.15);
+$shadow-heavy: 0 8px 16px rgba(0,0,0,0.2);
