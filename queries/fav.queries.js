@@ -1,6 +1,6 @@
 const favQueries = {
     getFavsByUser: `
-    SELECT r.*
+    SELECT f.id, r.*
     FROM Favs f
     JOIN Recipes r ON f.recipeid = r.recipeid
     WHERE f.userid = $1`,

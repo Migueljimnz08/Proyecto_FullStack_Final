@@ -59,7 +59,7 @@ const RecipeDetails = () => {
     return <p>La receta no esta disponible ahora mismo: {error}</p>;
   }
 
-  return <section>
+  return <section className="recipe-details">
     {recipe == null?
     <ThreeDots
           visible={true}
@@ -79,7 +79,8 @@ const RecipeDetails = () => {
     <p>{recipe.familyname}</p>
     <p>{recipe.category}</p>
     {loadingFav == true? null:
-    <button onClick={handleFavClick}>
+    <button onClick={handleFavClick}
+    className="fav-btn">
       {isFav? 'Eliminar de favoritos' : 'Añadir a favoritos'}  
     </button>}
     </>}

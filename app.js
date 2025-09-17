@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const path = require('path');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 dotenv.config();
 
@@ -26,6 +26,7 @@ app.use(cors({
   origin: 'http://localhost:5173', 
   credentials: true
 }));
+// app.use(cors());
 
 // Mas protección para la web
 app.use(helmet());

@@ -9,7 +9,7 @@ import NotFound from './NotFound';
 
 const Main = () => {
   return (
-    <main>
+    <main className="main">
       <Routes>
         <Route path='/' element={<Searcher/>} />
         <Route path='/recipe-details/:id' element={<RecipeDetails/>} />

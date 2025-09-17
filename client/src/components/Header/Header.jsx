@@ -19,7 +19,7 @@ const Header = () => {
 
   return <header className="header">
     <h1>Recetas familiares</h1>
-    <div>
+    <div className="nav">
     {/* {logged == true? 
     <Nav/>: */}
     <>
@@ -32,7 +32,7 @@ const Header = () => {
     <Link to='/' className='home-link'>
       Inicio
     </Link>
-    <button onClick={handleLogout}>Logout</button>
+    <button className="btn-logout" onClick={handleLogout}>Logout</button>
      </>{/*} */}
     </div> 
   </header>;
