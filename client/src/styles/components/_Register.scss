@@ -1,0 +1,70 @@
+@use 'sass:color';
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mixins;
+
+.register-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: vars.$padding-section;
+  background-color: vars.$color-light;
+  border-radius: vars.$border-radius;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: vars.$gap-section;
+
+  h2 {
+    text-align: center;
+    font-family: vars.$font-family;
+    color: vars.$color-secondary;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$gap-btn;
+
+    input {
+      padding: 0.5rem 1rem;
+      border-radius: vars.$border-radius;
+      border: 1px solid vars.$color-secondary;
+      font-family: vars.$font-family;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: vars.$color-accent;
+      }
+    }
+
+    button {
+      @include mixins.btn-style;
+      padding: vars.$padding-btn;
+      border-radius: vars.$border-radius;
+      border: none;
+      background-color: vars.$color-accent;
+      color: #fff;
+      font-family: vars.$font-family;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.scale(vars.$color-accent, $lightness: -10%);
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    font-family: vars.$font-family;
+
+    &:nth-of-type(1) {
+      color: red; // error
+    }
+
+    &:nth-of-type(2) {
+      color: vars.$color-green; // success
+    }
+  }
+}

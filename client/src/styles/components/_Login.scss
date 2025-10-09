@@ -1,0 +1,64 @@
+@use 'sass:color';
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mixins;
+
+.login-form {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: vars.$padding-section;
+  background-color: vars.$color-light;
+  border-radius: vars.$border-radius;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: vars.$gap-section;
+
+   h2 {
+    text-align: center;
+    font-family: vars.$font-family;
+    color: vars.$color-secondary;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$gap-btn;
+
+    input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: vars.$border-radius;
+      font-family: vars.$font-family;
+      font-size: 1rem;
+      transition: border 0.3s;
+
+      &:focus {
+        border-color: vars.$color-secondary;
+        outline: none;
+      }
+    }
+
+    button {
+      @include mixins.btn-style;
+      padding: vars.$padding-btn;
+      border-radius: vars.$border-radius;
+      border: none;
+      background-color: vars.$color-accent;
+      color: #fff;
+      font-family: vars.$font-family;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.scale(vars.$color-accent, $lightness: -10%);
+      }
+    }
+
+    p {
+      color: red;
+      font-family: vars.$font-family;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+}

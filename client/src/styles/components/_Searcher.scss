@@ -1,0 +1,65 @@
+@use 'sass:color';
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mixins;
+
+.home {
+  padding: vars.$padding-section;
+  background-color: vars.$color-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vars.$gap-section;
+  .recipes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: vars.$gap-section;
+    width: 100%;
+    justify-items: center;
+  }
+
+  h3 {
+    font-family: vars.$font-family;
+    color: vars.$color-secondary;
+    text-align: center;
+    margin-bottom: vars.$gap-section;
+  }
+
+  .search-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: vars.$gap-btn;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: vars.$gap-section;
+
+    input[type="text"],
+    select {
+      padding: 0.5rem 1rem;
+      border-radius: vars.$border-radius;
+      border: 1px solid vars.$color-secondary;
+      font-family: vars.$font-family;
+      font-size: 1rem;
+    }
+
+    button {
+      @include mixins.btn-style; 
+      background-color: vars.$color-accent;
+      color: #fff;
+      border: none;
+      border-radius: vars.$border-radius;
+      padding: vars.$padding-btn;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color.scale(vars.$color-accent, $lightness: -10%);
+      }
+    }
+
+    label {
+      font-family: vars.$font-family;
+      color: vars.$color-secondary;
+      margin-left: 0.5rem;
+    }
+  }
+}
